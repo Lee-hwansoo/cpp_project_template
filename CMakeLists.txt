@@ -12,3 +12,88 @@ project(
     VERSION 1.0.0
     DESCRIPTION "C++ Project Template"
 )
+
+message(STATUS " ")
+message(STATUS "Started all process in ${PROJECT_NAME} CMakeLists.txt.")
+message(STATUS " ")
+
+set(CPP_COMFILE_FLAGS_MSVC /W4 /WX /permissive-)
+set(CPP_COMFILE_FLAGS_OTHERS -Wall -Wpedantic -Wextra -Werror)
+
+if(NOT CPP_COMFILE_FLAGS)
+    if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+        set(CPP_COMFILE_FLAGS ${CPP_COMFILE_FLAGS_MSVC})
+    else()
+        set(CPP_COMFILE_FLAGS ${CPP_COMFILE_FLAGS_OTHERS})
+    endif()
+endif()
+
+set(${PROJECT_NAME}_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+set(${PROJECT_NAME}_SOURCE_PATH "${${PROJECT_NAME}_ROOT_PATH}/src")
+set(${PROJECT_NAME}_INCLUDE_PATH "${${PROJECT_NAME}_ROOT_PATH}/include")
+set(${PROJECT_NAME}_THIRDPARTY_PATH "${${PROJECT_NAME}_ROOT_PATH}/thirdparty")
+set(${PROJECT_NAME}_MODULE_PATH "${${PROJECT_NAME}_ROOT_PATH}/module")
+set(${PROJECT_NAME}_TEST_PATH "${${PROJECT_NAME}_ROOT_PATH}/test")
+set(${PROJECT_NAME}_APPLICATION_PATH "${${PROJECT_NAME}_ROOT_PATH}/app")
+set(${PROJECT_NAME}_RESOURCE_PATH "${${PROJECT_NAME}_ROOT_PATH}/resource")
+
+if(NOT PARSED_SYSTEM_INFO)
+    message(STATUS "---------------CMake information---------------")
+    message(STATUS "CMake version: ${CMAKE_VERSION}")
+    message(STATUS " ")
+
+    message(STATUS "---------------System information---------------")
+    message(STATUS "System Architecture name: ${CMAKE_SYSTEM_PROCESSOR}")
+    message(STATUS "System OS name: ${CMAKE_SYSTEM_NAME}")
+    message(STATUS "System OS version: ${CMAKE_SYSTEM_VERSION}")
+    message(STATUS " ")
+
+    message(STATUS "---------------Compiler information---------------")
+    message(STATUS "C++ Compiler id: ${CMAKE_CXX_COMPILER_ID}")
+    message(STATUS "C++ Compiler version: ${CMAKE_CXX_COMPILER_VERSION}")
+    message(STATUS "C++ Compiler options: ${CPP_COMFILE_FLAGS}")
+    message(STATUS " ")
+
+    message(STATUS "---------------C++ Standard information---------------")
+    message(STATUS "C++ Build type: ${CMAKE_BUILD_TYPE}")
+    message(STATUS "C++ Standard version: ${CMAKE_CXX_STANDARD}")
+    message(STATUS "C++ Standard required: ${CMAKE_CXX_STANDARD_REQUIRED}")
+    message(STATUS "C++ Extensions: ${CMAKE_CXX_EXTENSIONS}")
+    message(STATUS " ")
+endif()
+
+set(PARSED_SYSTEM_INFO TRUE)
+
+message(STATUS "---------------Project information---------------")
+message(STATUS "PROJECT_NAME: ${PROJECT_NAME}")
+message(STATUS "${PROJECT_NAME}_VERSION: ${PROJECT_VERSION}")
+message(STATUS "${PROJECT_NAME}_DESCRIPTION: ${PROJECT_DESCRIPTION}")
+message(STATUS " ")
+
+message(STATUS "---------------Project path information---------------")
+message(STATUS "${PROJECT_NAME}_ROOT_PATH: ${${PROJECT_NAME}_ROOT_PATH}")
+message(STATUS "${PROJECT_NAME}_SOURCE_PATH: ${${PROJECT_NAME}_SOURCE_PATH}")
+message(STATUS "${PROJECT_NAME}_INCLUDE_PATH: ${${PROJECT_NAME}_INCLUDE_PATH}")
+message(STATUS "${PROJECT_NAME}_THIRDPARTY_PATH: ${${PROJECT_NAME}_THIRDPARTY_PATH}")
+message(STATUS "${PROJECT_NAME}_MODULE_PATH: ${${PROJECT_NAME}_MODULE_PATH}")
+message(STATUS "${PROJECT_NAME}_TEST_PATH: ${${PROJECT_NAME}_TEST_PATH}")
+message(STATUS "${PROJECT_NAME}_APPLICATION_PATH: ${${PROJECT_NAME}_APPLICATION_PATH}")
+message(STATUS "${PROJECT_NAME}_RESOURCE_PATH: ${${PROJECT_NAME}_RESOURCE_PATH}")
+message(STATUS " ")
+
+add_subdirectory(${${PROJECT_NAME}_THIRDPARTY_PATH})
+
+set(${PROJECT_NAME}_SOURCE_FILES
+    src/main.cpp
+)
+
+add_executable(${PROJECT_NAME}
+    ${${PROJECT_NAME}_SOURCE_FILES}
+)
+
+target_compile_options(${PROJECT_NAME} PRIVATE
+    ${CPP_COMFILE_FLAGS}
+)
+
+message(STATUS "Finished all process in ${PROJECT_NAME} CMakeLists.txt.")
+message(STATUS " ")
