@@ -5,9 +5,6 @@ project(
   DESCRIPTION "Google Test"
   HOMEPAGE_URL "https://github.com/google/googletest.git"
 )
-message(STATUS "==================================")
-message(STATUS "${CMAKE_BINARY_DIR}")
-message(STATUS "${PROJECT_NAME}")
 
 set(${PROJECT_NAME}_GIT_TAG release-1.12.1 CACHE STRING "GTest git tag")
 set(${PROJECT_NAME}_PREFIX ${CMAKE_BINARY_DIR}/${PROJECT_NAME}-prefix CACHE STRING "GTest install prefix")
