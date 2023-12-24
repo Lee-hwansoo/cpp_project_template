@@ -16,6 +16,7 @@ RUN apt-get install -y \
     curl \
     wget \
     cmake \
+    clang-format \
     ninja-build \
     git \
     doxygen \
