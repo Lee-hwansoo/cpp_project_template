@@ -100,9 +100,9 @@ add_executable(${PROJECT_NAME}
 )
 
 # ! If you want to add include directories and link libraries, use the following code
-# target_include_directories(${PROJECT_NAME} PUBLIC
-#   ${${PROJECT_NAME}_INCLUDE_PATH}
-# )
+target_include_directories(${PROJECT_NAME} PUBLIC
+  ${${PROJECT_NAME}_INCLUDE_PATH}
+)
 
 # target_link_libraries(${PROJECT_NAME} PRIVATE
 # ! Add libraries here
