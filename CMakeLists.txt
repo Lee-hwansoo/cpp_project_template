@@ -116,7 +116,7 @@ target_compile_options(${PROJECT_NAME} PRIVATE
     ${CPP_COMFILE_FLAGS}
 )
 
-# include(cmake/create_documents.cmake)
+include(cmake/create_documents.cmake)
 
 message(STATUS "Finished all process in ${PROJECT_NAME} CMakeLists.txt.")
 message(STATUS " ")
