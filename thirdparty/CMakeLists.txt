@@ -26,7 +26,7 @@ function(build_thirdparty COMFIGURATION_PACKAGE_PATH)
     message(STATUS "Finish installation verification for ${PROJECT_NAME}.\n")
 endfunction()
 
-message(STATUS "Start Building thirdparties.")
+message(STATUS "Start Building thirdparties.\n")
 
 file(GLOB ELEMENTS "*")
 

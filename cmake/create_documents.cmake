@@ -1,7 +1,7 @@
 find_package(Doxygen)
 
 if(NOT DOXYGEN_FOUND)
-  message(FATAL_ERROR "Doxygen is needed to build the documentation.")
+  message(FATAL_ERROR "Doxygen is needed to build the documentation.\n")
 else()
   if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
     set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
@@ -9,8 +9,8 @@ else()
       COMMAND doxygen
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
       COMMENT "Generating documents...")
-    message(STATUS "Added generating API documentation with Doxygen in build time")
+    message(STATUS "Added generating API documentation with Doxygen in build time\n")
   else()
-    message(WARNING "File not found: ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile")
+    message(WARNING "File not found: ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile\n")
   endif()
 endif()
